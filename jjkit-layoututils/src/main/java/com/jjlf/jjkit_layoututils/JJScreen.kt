@@ -8,41 +8,38 @@ import kotlin.math.roundToInt
 
 object JJScreen {
 
-    private val display = Resources.getSystem().displayMetrics
-    private val density = Resources.getSystem().displayMetrics.density
+    private val displayMetrics = Resources.getSystem().displayMetrics
+    val density = Resources.getSystem().displayMetrics.density
 
-    fun density(): Float {
-        return density
-    }
-
+  
 
     fun percentWidth(percent: Float): Int {
-        val width = min(display.widthPixels, display.heightPixels)
+        val width = min(displayMetrics.widthPixels, displayMetrics.heightPixels)
         return (percent * width).roundToInt()
     }
 
     fun percentHeight(percent: Float): Int {
-        val height = max(display.widthPixels, display.heightPixels)
+        val height = max(displayMetrics.widthPixels, displayMetrics.heightPixels)
         return (percent * height).roundToInt()
     }
 
     fun percentWidthFloat(percent: Float): Float {
-        val width = min(display.widthPixels, display.heightPixels)
+        val width = min(displayMetrics.widthPixels, displayMetrics.heightPixels)
         return (percent * width)
     }
 
     fun percentHeightFloat(percent: Float): Float {
-        val height = max(display.widthPixels, display.heightPixels)
+        val height = max(displayMetrics.widthPixels, displayMetrics.heightPixels)
         return (percent * height)
     }
 
 
     fun width(): Int {
-        return min(display.widthPixels, display.heightPixels)
+        return min(displayMetrics.widthPixels, displayMetrics.heightPixels)
     }
 
     fun height(): Int {
-        return max(display.widthPixels, display.heightPixels)
+        return max(displayMetrics.widthPixels, displayMetrics.heightPixels)
     }
 
 
@@ -142,10 +139,10 @@ object JJScreen {
     }
 
     fun dp(dp: Float): Float {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp, display)
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp, displayMetrics)
     }
 
     fun sp(dp: Float): Float {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,dp, display)
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,dp, displayMetrics)
     }
 }
