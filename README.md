@@ -1,5 +1,5 @@
 # JJLayoutUtils
-Utils For Layout JJScrenn, JJMargin, JJPadding
+Utils For Layout JJScrenn, JJMargin, JJPadding and JJLayout (Layout custom views)
 
 ## Usage
 
@@ -15,6 +15,6 @@ allprojects {
 2.- Add the dependency
 ```
 dependencies {
-	        implementation 'com.github.Only-IceSoul:JJLayoutUtils:1.1'
+	        implementation 'com.github.Only-IceSoul:JJLayoutUtils:1.2'
 	}
 ```
