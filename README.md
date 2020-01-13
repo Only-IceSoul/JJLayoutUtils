@@ -1,5 +1,5 @@
 # JJLayoutUtils
-Utils For Layout JJScrenn, JJMargin, JJPadding
+Utils For Layout JJScrenn, JJMargin, JJPadding and JJLayout (layout custom view)
 
 ## Usage
 
