@@ -12,15 +12,17 @@ object JJLayout {
     
     private var mClView : View? = null
 
-    fun clSetView(view:View){
+    fun clSetView(view:View): JJLayout{
         mClView = view
+        return this
     }
 
-    fun clDisposeView(){
+    fun clDisposeView() : JJLayout{
         mClView = null
+        return this
     }
 
-    fun clFillParent( margin: JJMargin = JJMargin()){
+    fun clFillParent( margin: JJMargin = JJMargin()): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -31,9 +33,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, margin.left)
         cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, margin.right)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clFillParentHorizontally( marginStart: Int = 0, marginEnd: Int = 0){
+    fun clFillParentHorizontally( marginStart: Int = 0, marginEnd: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -41,9 +44,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, marginStart)
         cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, marginEnd)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clFillParentVertically( marginTop: Int = 0, marginBottom: Int = 0){
+    fun clFillParentVertically( marginTop: Int = 0, marginBottom: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -51,106 +55,195 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, marginTop)
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, marginBottom)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clTopToBottomOf( viewOfId: Int, margin: Int = 0){
+
+    fun clBottomToBottomParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clBottomToTopParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.TOP, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTopToTopParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+
+    fun clTopToBottomParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+
+    fun clStartToStarParent( margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clStartToEndParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.END, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clEndToEndParent(margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clEndToStartParent( margin: Int = 0): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.START, margin)
+        cs.applyTo(parentView)
+        return this
+    }
+
+
+    fun clTopToBottomOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.TOP, viewOfId, ConstraintSet.BOTTOM, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clBottomToBottomOf( viewOfId: Int, margin: Int = 0){
+    fun clBottomToBottomOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, viewOfId, ConstraintSet.BOTTOM, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clTopToTopOf( viewOfId: Int, margin: Int = 0){
+    fun clTopToTopOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.TOP, viewOfId, ConstraintSet.TOP, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clBottomToTopOf( viewOfId: Int, margin: Int = 0){
+    fun clBottomToTopOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, viewOfId, ConstraintSet.TOP, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clStartToStartOf( viewOfId: Int, margin: Int = 0){
+    fun clStartToStartOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.START, viewOfId, ConstraintSet.START, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clStartToEndOf( viewOfId: Int, margin: Int = 0){
+    fun clStartToEndOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.START, viewOfId, ConstraintSet.END, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clEndToEndOf( viewOfId: Int, margin: Int = 0){
+    fun clEndToEndOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.END, viewOfId, ConstraintSet.END, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clEndToStartOf( viewOfId: Int, margin: Int = 0){
+    fun clEndToStartOf( viewOfId: Int, margin: Int = 0): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.END, viewOfId, ConstraintSet.START, margin)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clVerticalBias( bias: Float){
+    fun clVerticalBias( bias: Float): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.setVerticalBias(mClView!!.id,bias)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clHorizontalBias( bias: Float){
+    fun clHorizontalBias( bias: Float): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.setHorizontalBias(mClView!!.id,bias)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clPercentWidth( width: Float) {
+    fun clPercentWidth( width: Float): JJLayout {
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainPercentWidth(mClView!!.id, width)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clPercentHeight( height: Float) {
+    fun clPercentHeight( height: Float) : JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainPercentHeight(mClView!!.id, height)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInParent() {
+    fun clCenterInParent() : JJLayout{
 
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
@@ -162,10 +255,11 @@ object JJLayout {
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
 
     }
 
-    fun clCenterInParent( verticalBias: Float, horizontalBias: Float, margin: JJMargin) {
+    fun clCenterInParent( verticalBias: Float, horizontalBias: Float, margin: JJMargin): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -176,10 +270,10 @@ object JJLayout {
         cs.setVerticalBias(mClView!!.id, verticalBias)
         cs.setHorizontalBias(mClView!!.id, horizontalBias)
         cs.applyTo(parentView)
-
+        return this
     }
 
-    fun clCenterInParentVertically()  {
+    fun clCenterInParentVertically() : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -187,21 +281,22 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0)
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
 
     }
 
-    fun clCenterInParentHorizontally()  {
+    fun clCenterInParentHorizontally()  : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, 0)
         cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
-
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInParentVertically( bias: Float, topMargin: Int, bottomMargin: Int) {
+    fun clCenterInParentVertically( bias: Float, topMargin: Int, bottomMargin: Int): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -209,20 +304,22 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, bottomMargin)
         cs.setVerticalBias(mClView!!.id, bias)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInParentHorizontally( bias: Float, startMargin: Int, endtMargin: Int)  {
+    fun clCenterInParentHorizontally( bias: Float, startMargin: Int, endMargin: Int) : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.connect(mClView!!.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, startMargin)
-        cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, endtMargin)
+        cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, endMargin)
         cs.setHorizontalBias(mClView!!.id, bias)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clCenterInParentTopVertically() {
+    fun clCenterInParentTopVertically() : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -230,10 +327,11 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0)
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clCenterInParentBottomVertically()  {
+    fun clCenterInParentBottomVertically() : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -241,9 +339,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0)
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInParentStartHorizontally()  {
+    fun clCenterInParentStartHorizontally(): JJLayout  {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -251,9 +350,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.START, 0)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInParentEndHorizontally()  {
+    fun clCenterInParentEndHorizontally()  : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -261,9 +361,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInTopVerticallyOf( topId: Int) {
+    fun clCenterInTopVerticallyOf( topId: Int) : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -271,10 +372,11 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, topId, ConstraintSet.TOP, 0)
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clCenterInBottomVerticallyOf( bottomId: Int)  {
+    fun clCenterInBottomVerticallyOf( bottomId: Int) : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -282,9 +384,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.BOTTOM, bottomId, ConstraintSet.BOTTOM, 0)
         cs.setVerticalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInStartHorizontallyOf( startId: Int)  {
+    fun clCenterInStartHorizontallyOf( startId: Int) : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -292,9 +395,10 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.END, startId, ConstraintSet.START, 0)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clCenterInEndHorizontallyOf( endId: Int)  {
+    fun clCenterInEndHorizontallyOf( endId: Int)  : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -302,78 +406,87 @@ object JJLayout {
         cs.connect(mClView!!.id, ConstraintSet.END, endId, ConstraintSet.END, 0)
         cs.setHorizontalBias(mClView!!.id, 0.5f)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clVisibility( visibility: Int) {
+    fun clVisibility( visibility: Int): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.setVisibility(mClView!!.id, visibility)
         cs.applyTo(parentView)
+        return this
     }
 
 
 
-    fun clElevation( elevation: Float)  {
+    fun clElevation( elevation: Float): JJLayout  {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.setElevation(mClView!!.id, elevation)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clMinWidth( w:Int) {
+    fun clMinWidth( w:Int): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainMinWidth(mClView!!.id,w)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clMinHeight( h:Int)  {
+    fun clMinHeight( h:Int) : JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainMinHeight(mClView!!.id,h)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clMaxWidth( w:Int) {
+    fun clMaxWidth( w:Int): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainMaxWidth(mClView!!.id,w)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clMaxHeight( h:Int) {
+    fun clMaxHeight( h:Int) : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainMaxHeight(mClView!!.id,h)
         cs.applyTo(parentView)
+        return this
     }
 
 
-    fun clWidth( width: Int) {
+    fun clWidth( width: Int): JJLayout {
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainWidth(mClView!!.id, width)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clHeight( height: Int) {
+    fun clHeight( height: Int) : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.constrainHeight(mClView!!.id, height)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clMargins( margins: JJMargin)  {
+    fun clMargins( margins: JJMargin)  : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
@@ -382,14 +495,16 @@ object JJLayout {
         cs.setMargin(mClView!!.id,ConstraintSet.END,margins.right)
         cs.setMargin(mClView!!.id,ConstraintSet.START,margins.left)
         cs.applyTo(parentView)
+        return this
     }
 
-    fun clVisibilityMode( visibility: Int) {
+    fun clVisibilityMode( visibility: Int) : JJLayout{
         val cs = ConstraintSet()
         val parentView = mClView!!.parent as ConstraintLayout
         cs.clone(parentView)
         cs.setVisibilityMode(mClView!!.id, visibility)
         cs.applyTo(parentView)
+        return this
     }
 
     //endregion
