@@ -22,6 +22,134 @@ object JJLayout {
         return this
     }
 
+    fun clAlpha(float:Float): JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setAlpha(mClView!!.id,float)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clRotation(float: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setRotation(mClView!!.id,float)
+        cs.applyTo(parentView)
+        return this
+
+    }
+
+    fun clRotationX(float: Float): JJLayout  {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setRotationX(mClView!!.id,float)
+        cs.applyTo(parentView)
+        return this
+
+    }
+
+    fun clRotationY(float: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setRotationY(mClView!!.id,float)
+        cs.applyTo(parentView)
+        return this
+
+    }
+
+    fun clTranslation(x: Float,y: Float)  : JJLayout{
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTranslation(mClView!!.id,x,y)
+        cs.applyTo(parentView)
+        return this
+    }
+    fun clTranslationX(x: Float): JJLayout  {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTranslationX(mClView!!.id,x)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTranslationY(y: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTranslationY(mClView!!.id,y)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTranslationZ(z: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTranslationZ(mClView!!.id,z)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTransformPivot(x: Float, y: Float): JJLayout  {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTransformPivot(mClView!!.id,x,y)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTransformPivotX(x: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTransformPivotX(mClView!!.id,x)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clTransformPivotY(y: Float): JJLayout  {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setTransformPivotY(mClView!!.id,y)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clScaleX(x: Float): JJLayout  {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setScaleX(mClView!!.id,x)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clScaleY(y: Float) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setScaleY(mClView!!.id,y)
+        cs.applyTo(parentView)
+        return this
+    }
+
+    fun clDimensionRatio(ratio: String) : JJLayout {
+        val cs = ConstraintSet()
+        val parentView =mClView!!.parent as ConstraintLayout
+        cs.clone(parentView)
+        cs.setDimensionRatio(mClView!!.id,ratio)
+        cs.applyTo(parentView)
+        return this
+    }
+
     fun clFillParent( margin: JJMargin = JJMargin()): JJLayout{
         val cs = ConstraintSet()
         val parentView =mClView!!.parent as ConstraintLayout
